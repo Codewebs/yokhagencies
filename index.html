@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOKHA - Yoshua Khalev Agencies | Architecture & Bureau d'Ingénierie</title>
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Palette Feng Shui Modernisée */
+            --rose-poudre: #E8D8D8;
+            --rose-soft: #F9F5F5;
+            --gris-galet: #F3F2F0;
+            --gris-moyen: #9E9E9C;
+            --noir-mineral: #1C1C1E;
+            --bleu-acier: #2B3A4A;
+            --bleu-nuit: #1A2A3A;
+            --blanc: #FFFFFF;
+            
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--gris-galet);
+            color: var(--noir-mineral);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .brand-logo {
+            font-family: var(--font-title);
+            letter-spacing: 0.03em;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--rose-poudre);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .brand-logo {
+            text-decoration: none;
+            color: var(--noir-mineral);
+        }
+
+        .brand-logo .title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+            color: var(--bleu-nuit);
+        }
+
+        .brand-logo .subtitle {
+            font-size: 0.7rem;
+            font-family: var(--font-body);
+            letter-spacing: 0.18em;
+            color: var(--gris-moyen);
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--noir-mineral);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--bleu-acier);
+        }
+
+        .btn-header {
+            background-color: var(--bleu-nuit);
+            color: var(--blanc) !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            transition: background 0.3s !important;
+        }
+
+        .btn-header:hover {
+            background-color: var(--bleu-acier) !important;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 11rem 2rem 6rem;
+            background: linear-gradient(135deg, var(--rose-soft) 0%, var(--gris-galet) 60%, var(--rose-poudre) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(43,58,74,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--blanc);
+            color: var(--bleu-acier);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--rose-poudre);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            color: var(--noir-mineral);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h2.subtitle-hero {
+            font-size: 1.8rem;
+            color: var(--bleu-acier);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+            color: #4A4A4A;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--bleu-nuit);
+            color: var(--blanc);
+            box-shadow: 0 4px 15px rgba(26, 42, 58, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--bleu-acier);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--blanc);
+            color: var(--noir-mineral);
+            border: 1px solid var(--rose-poudre);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--rose-soft);
+            transform: translateY(-2px);
+        }
+
+        /* --- HIGHLIGHT STATS --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: var(--blanc);
+            padding: 1.8rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--rose-poudre);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            text-align: left;
+        }
+
+        .stat-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--bleu-nuit);
+            font-family: var(--font-title);
+            display: block;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: var(--gris-moyen);
+            margin-top: 0.2rem;
+        }
+
+        /* --- SECTIONS GLOBALES --- */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            color: var(--noir-mineral);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-header p {
+            color: var(--gris-moyen);
+            font-size: 1.05rem;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background-color: var(--rose-poudre);
+            margin: 1rem auto;
+        }
+
+        /* --- A PROPOS --- */
+        .about-section {
+            background-color: var(--blanc);
+        }
+
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            color: var(--bleu-nuit);
+            margin-bottom: 1.2rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.2rem;
+            color: #555;
+            text-align: justify;
+        }
+
+        .about-features {
+            margin-top: 1.8rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .feature-item i {
+            color: var(--bleu-acier);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .quote-box {
+            background-color: var(--rose-soft);
+            border-left: 4px solid var(--bleu-acier);
+            padding: 2rem;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box p {
+            font-size: 1.15rem;
+            color: var(--noir-mineral);
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-box span {
+            font-size: 0.9rem;
+            color: var(--gris-moyen);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* --- DOMAINES D'INTERVENTION --- */
+        .services-section {
+            background-color: var(--gris-galet);
+        }
+
+        .poles-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .pole-column {
+            background: var(--blanc);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(232, 216, 216, 0.5);
+        }
+
+        .pole-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--rose-soft);
+        }
+
+        .pole-header i {
+            font-size: 2rem;
+            color: var(--bleu-nuit);
+        }
+
+        .pole-header h3 {
+            font-size: 1.8rem;
+            color: var(--noir-mineral);
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        .service-card {
+            background-color: var(--rose-soft);
+            padding: 1.2rem 1.5rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--bleu-acier);
+        }
+
+        .service-card h4 {
+            font-size: 1.1rem;
+            color: var(--bleu-nuit);
+            margin-bottom: 0.2rem;
+        }
+
+        .service-card .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--gris-moyen);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* --- REALISATIONS --- */
+        .projects-section {
+            background-color: var(--blanc);
+        }
+
+        .projects-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--gris-galet);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            height: 200px;
+            background-color: var(--rose-poudre);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bleu-nuit);
+            font-size: 3rem;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info .category {
+            font-size: 0.8rem;
+            color: var(--bleu-acier);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .project-info h4 {
+            font-size: 1.3rem;
+            margin: 0.3rem 0 0.5rem;
+            color: var(--noir-mineral);
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* --- CONTACT & FORMULAIRE --- */
+        .contact-section {
+            background-color: var(--rose-soft);
+        }
+
+        .contact-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+        }
+
+        .contact-info-box {
+            background-color: var(--bleu-nuit);
+            color: var(--blanc);
+            padding: 3rem 2.5rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-info-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--rose-poudre);
+        }
+
+        .contact-details {
+            margin: 2rem 0;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item i {
+            font-size: 1.3rem;
+            color: var(--rose-poudre);
+            width: 25px;
+        }
+
+        .detail-item a {
+            color: var(--blanc);
+            text-decoration: none;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Formulaire */
+        .form-box {
+            background: var(--blanc);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--noir-mineral);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #DDD;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            background-color: var(--gris-galet);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--bleu-acier);
+            background-color: var(--blanc);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            height: 120px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--noir-mineral);
+            color: var(--blanc);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-brand .title {
+            font-size: 1.5rem;
+            font-family: var(--font-title);
+            color: var(--rose-poudre);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            text-align: center;
+            color: var(--gris-moyen);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-grid, .contact-wrapper, .poles-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2.4rem; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <span class="title">YOKHA</span>
+                <span class="subtitle">Yoshua Khalev Agencies</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#agence">L'Agence</a></li>
+                <li><a href="#services">Savoir-Faire</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="btn-header">Devis & Consultation</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="accueil">
+        <div class="hero-container">
+            <span class="hero-badge">Cabinet d'Architecture & Bureau d'Ingénierie</span>
+            <h1>Concevoir l'Espace. Bâtir l'Avenir.</h1>
+            <h2 class="subtitle-hero">YOKHA — Yoshua Khalev Agencies</h2>
+            <p>De la conception architecturale audacieuse aux calculs de structures complexes, YOKHA façonne des ouvrages durables, innovants et sur mesure au Cameroun et à l'international.</p>
+            
+            <div class="hero-actions">
+                <a href="#services" class="btn btn-primary">Explorer nos Services</a>
+                <a href="#contact" class="btn btn-secondary">Lancer un projet</a>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="value">2-en-1</span>
+                    <span class="label">Architecture & Ingénierie</span>
+                </div>
+                <div class="stat-card">
+                    <span class="value">100%</span>
+                    <span class="label">Sur Mesure & Éco-Conçu</span>
+                </div>
+                <div class="stat-card">
+                    <span class="value">VRD</span>
+                    <span class="label">& Ouvrages d'Art</span>
+                </div>
+                <div class="stat-card">
+                    <span class="value">3D / BIM</span>
+                    <span class="label">Plans & Exécution</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A PROPOS -->
+    <section class="about-section" id="agence">
+        <div class="about-grid">
+            <div class="about-content">
+                <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                    <h2>À Propos de L'Agence</h2>
+                    <div class="divider" style="margin: 0.5rem 0 0 0;"></div>
+                </div>
+                <h3>L'alliance de la rigueur technique et de la création spatiale</h3>
+                <p>Dirigée par Yoshua Khalev, l'agence YOKHA est une structure pluridisciplinaire réunissant sous un même toit les compétences d'architectes créateurs et d'ingénieurs calculateurs.</p>
+                <p>Cette synergie unique nous permet de concilier l'esthétique visionnaire d'un projet avec sa faisabilité structurelle la plus stricte. Du bâtiment résidentiel haut de gamme aux grandes infrastructures de transport (ponts, chaussées, VRD), nous garantissons sécurité, économie et élégance.</p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                        <div>
+                            <strong>Conception globale</strong>
+                            <p>De l'esquisse aux plans d'exécution béton/métal.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-leaf"></i>
+                        <div>
+                            <strong>Engagement Éco-responsable</strong>
+                            <p>Éco-construction et architecture intégrée.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                <p>"Chaque ligne tracée répond autant à une quête d'esthétique qu'à une équation de résistance des matériaux."</p>
+                <span>— Signature YOKHA</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAVOIR-FAIRE / SERVICES -->
+    <section class="services-section" id="services">
+        <div class="section-header">
+            <h2>Nos Domaines d'Intervention</h2>
+            <p>Architecture & Ingénierie réunies au service de vos projets</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="poles-container">
+            <!-- POLE ARCHITECTURE -->
+            <div class="pole-column">
+                <div class="pole-header">
+                    <i class="fa-solid fa-pen-ruler"></i>
+                    <div>
+                        <h3>Pôle Architecture</h3>
+                    </div>
+                </div>
+
+                <div class="service-cards">
+                    <div class="service-card">
+                        <h4>Conception Bâtiment</h4>
+                        <span class="tag">BOIS • MÉTAL • BÉTON • MAÇONNERIE</span>
+                        <p>Projets résidentiels, commerciaux et institutionnels. Choix rigoureux des matériaux et intégration esthétique dans l'environnement.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Architecture d'Intérieur</h4>
+                        <span class="tag">AMÉNAGEMENT & DÉCORATION</span>
+                        <p>Sublimation des espaces intérieurs, jeu de lumière, mobilier sur mesure et ergonomie optimale pour logements et espaces de travail.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Architecture Paysagiste</h4>
+                        <span class="tag">ESPACES VERTS & PAYSAGES</span>
+                        <p>Conception de jardins, terrasses, parcs urbains et aménagements extérieurs harmonieux en symbiose avec le bâti.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Bâtiments Industriels</h4>
+                        <span class="tag">USINES & ENTREPÔTS</span>
+                        <p>Conception de structures industrielles performantes, fonctionnelles et adaptées aux flux logistiques intensifs.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Urbanisme</h4>
+                        <span class="tag">PLANIFICATION URBAINE</span>
+                        <p>Aménagement de quartiers, lotissements, master plans d'aménagement du territoire et stratégies d'extension urbaine.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Éco-Construction</h4>
+                        <span class="tag">ARCHITECTURE DURABLE</span>
+                        <p>Projets bioclimatiques à faible empreinte carbone, valorisation des matériaux locaux et efficacité énergétique passive.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POLE INGENIERIE -->
+            <div class="pole-column">
+                <div class="pole-header">
+                    <i class="fa-solid fa-calculator"></i>
+                    <div>
+                        <h3>Pôle Ingénierie</h3>
+                    </div>
+                </div>
+
+                <div class="service-cards">
+                    <div class="service-card">
+                        <h4>Calculs de Structure</h4>
+                        <span class="tag">BOIS • BÉTON • MÉTAL • ÉPHÉMÈRE</span>
+                        <p>Dimensionnement, résistance des matériaux et études de faisabilité technique pour tout type d'ouvrage.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Plans d'Exécution</h4>
+                        <span class="tag">BÉTON ARMÉ & PRÉCONTRAINT</span>
+                        <p>Élaboration des dossiers d'exécution détaillés pour le chantier, structures en bois, métal et béton armé/précontraint.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Infrastructures & Ouvrages d'Art</h4>
+                        <span class="tag">PONTS • CHAUSSÉES • VRD</span>
+                        <p>Conception et étude technique de voies de circulation, ponts, systèmes d'assainissement et réseaux divers (VRD).</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>Études de Fluides & Équipements</h4>
+                        <span class="tag">ÉLECTRICITÉ • PLOMBERIE • VMC</span>
+                        <p>Conception détaillée des plans électriques, réseaux de plomberie sanitaire, VMC et installations techniques associées.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REALISATIONS -->
+    <section class="projects-section" id="projets">
+        <div class="section-header">
+            <h2>Projets Récents</h2>
+            <p>Aperçu de nos réalisations alliant élégance architecturale et ingénierie de pointe.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img"><i class="fa-solid fa-house-chimney"></i></div>
+                <div class="project-info">
+                    <span class="category">Architecture Résidentielle</span>
+                    <h4>Villa Contemporaine Luxe</h4>
+                    <p>Conception bioclimatique & structure béton armé intégrée.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img"><i class="fa-solid fa-bridge"></i></div>
+                <div class="project-info">
+                    <span class="category">Ingénierie & VRD</span>
+                    <h4>Pont & Franchissement Urbain</h4>
+                    <p>Étude de structure précontrainte et calculs d'impact environnemental.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img"><i class="fa-solid fa-building"></i></div>
+                <div class="project-info">
+                    <span class="category">Urbanisme & Bâtiment</span>
+                    <h4>Complexe Glass & Steel</h4>
+                    <p>Plans d'exécution fluides, électricité et VMC totalement intégrés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & DEVIS -->
+    <section class="contact-section" id="contact">
+        <div class="section-header">
+            <h2>Contact & Rendez-vous</h2>
+            <p>Parlons de votre futur projet</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="contact-wrapper">
+            <div class="contact-info-box">
+                <div>
+                    <h3>Cabinet YOKHA</h3>
+                    <p>Que vous soyez un particulier, un promoteur immobilier ou une collectivité publique, notre équipe est à votre disposition pour analyser vos besoins.</p>
+                    
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <strong>Téléphone / Direct :</strong><br>
+                                <a href="tel:+237686655396">+237 686 655 396</a><br>
+                                <a href="tel:+237641116724">+237 641 116 724</a>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong>Adresse Email :</strong><br>
+                                <a href="mailto:khalevyoshua@gmail.com">khalevyoshua@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="https://wa.me/237686655396" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Discuter sur WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- FORMULAIRE -->
+            <div class="form-box">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Votre demande a bien été envoyée au Cabinet YOKHA.');">
+                    <div class="form-group">
+                        <label for="fullname">Nom Complet *</label>
+                        <input type="text" id="fullname" class="form-control" required placeholder="Votre nom et prénom">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Téléphone *</label>
+                        <input type="tel" id="phone" class="form-control" required placeholder="+237 ...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="votre@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pole">Pôle Concerné</label>
+                        <select id="pole" class="form-control">
+                            <option>Architecture (Conception, Intérieur...)</option>
+                            <option>Ingénierie (Structure, VRD, Plans d'exécution...)</option>
+                            <option>Projet Complet (Architecture + Ingénierie)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Détails du projet *</label>
+                        <textarea id="message" class="form-control" required placeholder="Décrivez succinctement votre projet (localisation, superficie, contraintes...)"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="title">YOKHA</div>
+                <p>Yoshua Khalev Agencies</p>
+            </div>
+            <div>
+                <p>Architecture, Conception Bâtiment & Bureau d'Études Ingénierie.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 YOKHA - Yoshua Khalev Agencies. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
